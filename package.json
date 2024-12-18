@@ -1,0 +1,80 @@
+{
+  "name": "vscode-ollama-chat",
+  "displayName": "VS Code Ollama Chat",
+  "description": "Chat with Ollama AI in VS Code sidebar",
+  "version": "0.0.1",
+  "publisher": "vscode-ollama-chat",
+  "engines": {
+    "vscode": "^1.60.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onView:ollama-chat-sidebar"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "vscode-ollama-chat.startChat",
+        "title": "Start Ollama Chat"
+      }
+    ],
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "ollama-chat-sidebar",
+          "title": "Ollama Chat",
+          "icon": "resources/chat.svg"
+        }
+      ]
+    },
+    "views": {
+      "ollama-chat-sidebar": [
+        {
+          "type": "webview",
+          "id": "ollama-chat-sidebar",
+          "name": "Chat"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "npm run compile:extension && npm run compile:webview",
+    "compile:extension": "tsc -p ./tsconfig.extension.json",
+    "compile:webview": "vite build",
+    "watch": "concurrently \"npm run watch:extension\" \"npm run watch:webview\"",
+    "watch:extension": "tsc -watch -p ./tsconfig.extension.json",
+    "watch:webview": "vite build --watch",
+    "pretest": "npm run compile",
+    "test": "node ./out/test/runTest.js",
+    "dev": "vite",
+    "watch:all": "concurrently \"npm run watch\" \"npm run dev\""
+  },
+  "dependencies": {
+    "marked": "^9.1.2",
+    "pinia": "^2.1.7",
+    "vue": "^3.3.8"
+  },
+  "devDependencies": {
+    "@types/dom-webcodecs": "^0.1.13",
+    "@types/node": "^18.0.0",
+    "@types/node-fetch": "^2.6.4",
+    "@types/vscode": "^1.60.0",
+    "@types/vscode-webview": "^1.57.5",
+    "@vitejs/plugin-vue": "^4.5.0",
+    "@vue/compiler-sfc": "^3.3.8",
+    "concurrently": "^8.2.2",
+    "sass": "^1.81.0",
+    "typescript": "^5.0.2",
+    "vite": "^5.0.0",
+    "vue-tsc": "^2.1.10"
+  },
+  "files": [
+    "out/**/*",
+    "media/**/*",
+    "resources/**/*"
+  ]
+}

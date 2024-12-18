@@ -1,0 +1,212 @@
+html, body {
+    height: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+#chat-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+#messages {
+    flex: 1;
+    overflow-y: auto;
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid var(--vscode-input-border);
+}
+
+#bottom-container {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+#input-container {
+    display: flex;
+    position: relative;
+    gap: 8px;
+}
+
+#model-container {
+    display: flex;
+    justify-content: flex-end;
+}
+
+#model-selector {
+    font-size: 11px;
+    padding: 2px 4px;
+    background-color: var(--vscode-input-background);
+    color: var(--vscode-input-foreground);
+    border: 1px solid var(--vscode-input-border);
+    border-radius: 2px;
+    width: auto;
+    min-width: 120px;
+}
+
+#message-input {
+    flex: 1;
+    padding: 5px;
+    background-color: var(--vscode-input-background);
+    color: var(--vscode-input-foreground);
+    border: 1px solid var(--vscode-input-border);
+}
+
+.message {
+    margin-bottom: 10px;
+    padding: 12px;
+    border-radius: 4px;
+    line-height: 1.5;
+}
+
+.user-message {
+    background-color: var(--vscode-editor-background);
+    color: var(--vscode-editor-foreground);
+    margin-left: 20px;
+}
+
+.bot-message {
+    background-color: var(--vscode-editor-inactiveSelectionBackground);
+    color: var(--vscode-editor-foreground);
+    margin-right: 20px;
+}
+
+.bot-message p {
+    margin: 0 0 1em 0;
+}
+
+.bot-message p:last-child {
+    margin-bottom: 0;
+}
+
+.bot-message h1,
+.bot-message h2,
+.bot-message h3,
+.bot-message h4,
+.bot-message h5,
+.bot-message h6 {
+    margin-top: 1em;
+    margin-bottom: 0.5em;
+    color: var(--vscode-editor-foreground);
+}
+
+.bot-message pre {
+    margin: 0.8em 0;
+    padding: 1em;
+    border-radius: 6px;
+    background-color: var(--vscode-editor-background);
+    overflow-x: auto;
+}
+
+.bot-message code {
+    font-family: var(--vscode-editor-font-family, 'Consolas, Monaco, monospace');
+    font-size: var(--vscode-editor-font-size, 14px);
+}
+
+.bot-message p code {
+    background-color: var(--vscode-editor-background);
+    padding: 0.2em 0.4em;
+    border-radius: 3px;
+    font-size: 0.9em;
+}
+
+.bot-message ul,
+.bot-message ol {
+    margin: 0.8em 0;
+    padding-left: 2em;
+}
+
+.bot-message li {
+    margin: 0.3em 0;
+}
+
+.bot-message a {
+    color: var(--vscode-textLink-foreground);
+    text-decoration: none;
+}
+
+.bot-message a:hover {
+    text-decoration: underline;
+}
+
+.bot-message blockquote {
+    margin: 0.8em 0;
+    padding-left: 1em;
+    border-left: 3px solid var(--vscode-editor-lineHighlightBorder);
+    color: var(--vscode-descriptionForeground);
+}
+
+.bot-message table {
+    border-collapse: collapse;
+    margin: 0.8em 0;
+    width: 100%;
+}
+
+.bot-message th,
+.bot-message td {
+    border: 1px solid var(--vscode-editor-lineHighlightBorder);
+    padding: 0.5em 0.8em;
+}
+
+.bot-message th {
+    background-color: var(--vscode-editor-background);
+}
+
+.error-message {
+    background-color: var(--vscode-errorForeground);
+    color: var(--vscode-editor-background);
+    padding: 5px;
+    margin: 5px 0;
+}
+
+.system-message {
+    color: var(--vscode-descriptionForeground);
+    font-style: italic;
+    text-align: center;
+    padding: 5px;
+}
+
+#loading-indicator {
+    display: none;
+    position: absolute;
+    right: 50px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 16px;
+    height: 16px;
+    border: 2px solid var(--vscode-editor-foreground);
+    border-top: 2px solid transparent;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: translateY(-50%) rotate(0deg); }
+    100% { transform: translateY(-50%) rotate(360deg); }
+}
+
+button {
+    background-color: var(--vscode-button-background);
+    color: var(--vscode-button-foreground);
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: var(--vscode-button-hoverBackground);
+}
+
+button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}

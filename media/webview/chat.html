@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src {{cspSource}} https://cdn.jsdelivr.net 'unsafe-inline'; script-src {{cspSource}} https://cdn.jsdelivr.net 'unsafe-inline';">
+    <title>Ollama Chat</title>
+    <link rel="stylesheet" href="{{styleUri}}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11.8.0/styles/github-dark.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/marked@9.1.2/marked.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/highlight.js@11.8.0/lib/core.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/highlight.js@11.8.0/lib/languages/javascript.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/highlight.js@11.8.0/lib/languages/typescript.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/highlight.js@11.8.0/lib/languages/python.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/highlight.js@11.8.0/lib/languages/bash.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/highlight.js@11.8.0/lib/languages/json.min.js"></script>
+</head>
+<body>
+    <div id="chat-container">
+        <div id="messages"></div>
+        <div id="bottom-container">
+            <div id="input-container">
+                <input type="text" id="message-input" placeholder="Type your message..." disabled>
+                <div id="loading-indicator"></div>
+                <button id="send-button" disabled>Send</button>
+            </div>
+            <div id="model-container">
+                <select id="model-selector">
+                    <option value="">Select model...</option>
+                    {{modelOptions}}
+                </select>
+            </div>
+        </div>
+    </div>
+    <script src="{{scriptUri}}"></script>
+</body>
+</html>
